@@ -37,25 +37,19 @@ export const ArticleParamsForm = ({
 				}}
 			/>
 			<aside className={containerClass} ref={formRef}>
-				<form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+				<form
+					className={styles.form}
+					onSubmit={(e) => {
+						e.preventDefault();
+						onApply?.();
+					}}
+					onReset={() => {
+						onReset?.();
+					}}>
 					{children}
 					<div className={styles.bottomContainer}>
-						<Button
-							title='Сбросить'
-							htmlType='reset'
-							type='clear'
-							onClick={() => {
-								onReset?.();
-							}}
-						/>
-						<Button
-							title='Применить'
-							htmlType='submit'
-							type='apply'
-							onClick={() => {
-								onApply?.();
-							}}
-						/>
+						<Button title='Сбросить' htmlType='reset' type='clear' />
+						<Button title='Применить' htmlType='submit' type='apply' />
 					</div>
 				</form>
 			</aside>
